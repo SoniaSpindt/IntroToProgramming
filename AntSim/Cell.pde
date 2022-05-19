@@ -13,7 +13,11 @@ public class Cell{
     isNest = true;
   }
   
-  void dropFood(){
+  void updateFoodStatus(){
     hasFood = true; 
+  }
+  
+  boolean getHasFood(){
+    return hasFood;
   }
 }

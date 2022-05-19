@@ -14,10 +14,12 @@ void settings(){
 void setup(){
   background(0);
   colony = new Colony(numAnts, numFood, canvasSize);
-  grid = new Grid(canvasSize);
+  grid = new Grid(canvasSize, numFood);
   grid.drawGrid();
 }
 
 void draw(){
+  grid.drawGrid();
   colony.drawColony();
+  //print(colony.getColony().get(0).moveAnt());
 }

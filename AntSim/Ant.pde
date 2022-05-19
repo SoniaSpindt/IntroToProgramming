@@ -13,5 +13,17 @@ public class Ant{
    rect(x, y, 10, 10);
  }
  
- 
+ void moveAnt(){
+   String[] directions = {"Up", "Right", "Down", "Left"};
+   int idx = int(random(0, 4));
+   if(directions[idx] == "Up"){
+     y = y - 10;
+   }else if(directions[idx] == "Right"){
+     x = x + 10; 
+   }else if(directions[idx] == "Down"){
+     y = y + 10; 
+   }else if(directions[idx] == "Left"){
+     x = x - 10;
+   }
+ }
 }
