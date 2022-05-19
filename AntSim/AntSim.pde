@@ -23,5 +23,4 @@ void draw(){
   grid.drawGrid();
   colony.drawColony();
   colony.moveColony();
-  //print(colony.getColony().get(0).moveAnt());
 }

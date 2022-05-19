@@ -17,7 +17,11 @@ public class Cell{
     hasFood = true; 
   }
   
-  boolean getHasFood(){
+  boolean hasFood(){
     return hasFood;
+  }
+  
+  boolean hasNest(){
+   return isNest; 
   }
 }

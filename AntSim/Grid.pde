@@ -4,7 +4,13 @@ public class Grid{
   
   public Grid(int size, int numFood){
     makeCells(size);
+    makeNest(size/10);
     dropFood(size, numFood);
+  }
+  
+  void makeNest(int size){
+    Cell temp = grid[size/2][size/2]; 
+    temp.buildNest();
   }
   
   void dropFood(int size, int numFood){
@@ -15,7 +21,6 @@ public class Grid{
     
     // Update cells to reflect food presence
     for(int i = 0; i < foodItems.size(); i++){
-      println(foodItems.get(i).getFoodX());
       Cell temp = grid[foodItems.get(i).getFoodX()][foodItems.get(i).getFoodY()];
       temp.updateFoodStatus();
     }
@@ -41,8 +46,11 @@ public class Grid{
       for(int j = 0; j < grid.length; j++){
         fill(0, 255, 0);
         
-        if(grid[i][j].getHasFood()){
+        if(grid[i][j].hasFood()){
           fill(255, 0, 0);
+        }
+        if(grid[i][j].hasNest()){
+          fill(255, 255, 0); 
         }
         
         rect(grid[i][j].x, grid[i][j].y, 10, 10);
