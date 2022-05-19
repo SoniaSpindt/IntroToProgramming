@@ -17,7 +17,11 @@ public class Colony{
       a.drawAnt();
     }
   }
-  
+  void moveColony(){
+    for(Ant a: ants){
+      a.moveAnt(); 
+    }
+  }
   void addAnt(Ant a){
     ants.add(a);
   }
