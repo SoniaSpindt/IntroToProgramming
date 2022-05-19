@@ -3,10 +3,14 @@ public class Cell{
   int y;
   boolean isNest;
   boolean hasFood;
+  boolean antPheramone;
   
   public Cell(int x, int y){
     this.x = x;
     this.y = y;
+    isNest = false;
+    hasFood = false;
+    antPheramone = false;
   }
   
   void buildNest(){
@@ -17,11 +21,19 @@ public class Cell{
     hasFood = true; 
   }
   
+  void dropPheramone(){
+    antPheramone = true; 
+  }
+  
   boolean hasFood(){
     return hasFood;
   }
   
   boolean hasNest(){
    return isNest; 
+  }
+  
+  boolean hasPheramone(){
+    return antPheramone; 
   }
 }

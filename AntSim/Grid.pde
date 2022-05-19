@@ -23,9 +23,9 @@ public class Grid{
     for(int i = 0; i < foodItems.size(); i++){
       Cell temp = grid[foodItems.get(i).getFoodX()][foodItems.get(i).getFoodY()];
       temp.updateFoodStatus();
-    }
-    
+    }  
   }
+  
   void makeCells(int s){
     // Makes a grid of cells
     // The ant nest is found in the (near) center of every grid
@@ -41,6 +41,16 @@ public class Grid{
     }
   }
   
+  void updatePheramones(Colony ants){
+     for(int i = 0; i < ants.getColony().size(); i++){
+       for(int j = 0; j < grid.length; j++){
+         for(int k = 0; k < grid[0].length; k++){
+           
+         }
+       }
+     }
+  }
+  
   void drawGrid(){
     for(int i = 0; i < grid.length; i++){
       for(int j = 0; j < grid.length; j++){
@@ -51,6 +61,9 @@ public class Grid{
         }
         if(grid[i][j].hasNest()){
           fill(255, 255, 0); 
+        }
+        if(grid[i][j].hasPheramone()){
+          fill(0, 255, 255);
         }
         
         rect(grid[i][j].x, grid[i][j].y, 10, 10);
