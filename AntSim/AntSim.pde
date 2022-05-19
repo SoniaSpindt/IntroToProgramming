@@ -1,6 +1,6 @@
 int numAnts = 10; // Assign this to a single value.
 int canvasSize = 600; // Assign this to a single value that is greater than 10 (I recommend at least 200).
-
+int numFood = 10; // Assign this to a single value.
 
 
 // Do not change any of the code found below.
@@ -13,7 +13,7 @@ void settings(){
 
 void setup(){
   background(0);
-  colony = new Colony(numAnts, canvasSize);
+  colony = new Colony(numAnts, numFood, canvasSize);
   grid = new Grid(canvasSize);
   grid.drawGrid();
 }

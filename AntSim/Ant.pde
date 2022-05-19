@@ -9,7 +9,7 @@ public class Ant{
  }
  
  void drawAnt(){
-   fill(255);
+   fill(0);
    rect(x, y, 10, 10);
  }
  
