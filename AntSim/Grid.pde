@@ -42,7 +42,7 @@ public class Grid{
   }
   
   void updatePheramones(ArrayList<Ant> ants){
-     for(int i = 0; i < ants.getColony().size(); i++){
+     for(int i = 0; i < ants.size(); i++){
        for(int j = 0; j < grid.length; j++){
          for(int k = 0; k < grid.length; k++){
            if(grid[j][k].getX() == ants.get(i).getX() && grid[j][k].getY() == ants.get(i).getY()){
@@ -61,11 +61,11 @@ public class Grid{
         if(grid[i][j].hasFood()){
           fill(255, 0, 0);
         }
-        if(grid[i][j].hasNest()){
-          fill(255, 255, 0); 
-        }
         if(grid[i][j].hasPheramone()){
           fill(0, 255, 255);
+        }
+        if(grid[i][j].hasNest()){
+          fill(255, 255, 0); 
         }
         
         rect(grid[i][j].x, grid[i][j].y, 10, 10);

@@ -1,4 +1,4 @@
-int numAnts = 10; // Assign this to a single value.
+int numAnts = 1; // Assign this to a single value.
 int canvasSize = 1200; // Assign this to a single value that is greater than 10 (I recommend at least 200).
 int numFood = 10; // Assign this to a single value.
 

@@ -20,8 +20,11 @@ public class Ant{
    fill(0);
    rect(x, y, 10, 10);
  }
- 
+
  void moveAnt(){
+   
+   
+   // No food in nearby cells? Randomly move.
    String[] directions = {"Up", "Right", "Down", "Left"};
    int idx = int(random(0, 4));
    while(currentDirection == "Up" && idx == 2){
@@ -36,6 +39,7 @@ public class Ant{
    while(currentDirection == "Left" && idx == 1){
      idx = int(random(0, 4)); 
    }
+   
    if(directions[idx] == "Up"){
      y = y - 10;
    }else if(directions[idx] == "Right"){
