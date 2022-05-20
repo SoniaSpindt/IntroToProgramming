@@ -9,6 +9,12 @@ public class Ant{
    y = middle / 2;
    currentDirection = "Up";
  }
+ int getY(){
+   return y; 
+ }
+ int getX(){
+   return x; 
+ }
  
  void drawAnt(){
    fill(0);

@@ -12,6 +12,12 @@ public class Cell{
     hasFood = false;
     antPheramone = false;
   }
+  int getY(){
+    return y; 
+  }
+  int getX(){
+    return x; 
+  }
   
   void buildNest(){
     isNest = true;

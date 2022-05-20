@@ -21,7 +21,7 @@ void setup(){
 
 void draw(){
   grid.drawGrid();
-  grid.updatePheramones(colony);
+  grid.updatePheramones(colony.getColony());
   colony.drawColony();
   colony.moveColony();
 }

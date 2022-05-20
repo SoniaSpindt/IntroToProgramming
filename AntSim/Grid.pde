@@ -41,11 +41,13 @@ public class Grid{
     }
   }
   
-  void updatePheramones(Colony ants){
+  void updatePheramones(ArrayList<Ant> ants){
      for(int i = 0; i < ants.getColony().size(); i++){
        for(int j = 0; j < grid.length; j++){
-         for(int k = 0; k < grid[0].length; k++){
-           
+         for(int k = 0; k < grid.length; k++){
+           if(grid[j][k].getX() == ants.get(i).getX() && grid[j][k].getY() == ants.get(i).getY()){
+             grid[j][k].dropPheramone();
+           }
          }
        }
      }
