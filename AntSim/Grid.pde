@@ -53,6 +53,25 @@ public class Grid{
      }
   }
   
+  Cell[][] getCells(){
+    return grid; 
+  }
+  
+  Cell[] getAdjacentCells(int x, int y){
+    Cell[] cells = new Cell[4];
+    
+    // Up
+    cells[0] = grid[x][y-10];
+    // Right
+    cells[1] = grid[x+10][y];
+    // Down
+    cells[2] = grid[x][y+10];
+    // Left
+    cells[3] = grid[x-10][y];
+    
+    return cells;
+  }
+  
   void drawGrid(){
     for(int i = 0; i < grid.length; i++){
       for(int j = 0; j < grid.length; j++){

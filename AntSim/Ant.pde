@@ -21,12 +21,24 @@ public class Ant{
    rect(x, y, 10, 10);
  }
 
- void moveAnt(){
-   
+ String moveAnt(Grid g){
+   // Check adjacent cells for food
+   String[] directions = {"Up", "Right", "Down", "Left"};
+   int idx = 0;
+   Cell[] gridAdjCells = g.getAdjacentCells(this.x/10, this.y/10);
+   for(Cell c: gridAdjCells){
+     if(c.hasFood()){
+       print("Eat");
+       currentDirection = directions[idx]; // Idx will correspond with correct position of adjacent cell because of how the array of cells is constructed in getAdjacentCells.
+       return currentDirection;
+     }
+     idx = idx + 1;
+   }
    
    // No food in nearby cells? Randomly move.
-   String[] directions = {"Up", "Right", "Down", "Left"};
-   int idx = int(random(0, 4));
+   idx = int(random(0, 4));
+   
+   // Prevent backwards movement
    while(currentDirection == "Up" && idx == 2){
      idx = int(random(0, 4));
    }
@@ -49,6 +61,8 @@ public class Ant{
    }else if(directions[idx] == "Left"){
      x = x - 10;
    }
+   
    currentDirection = directions[idx];
+   return currentDirection;
  }
 }

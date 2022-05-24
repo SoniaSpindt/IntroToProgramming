@@ -1,5 +1,5 @@
-int numAnts = 1; // Assign this to a single value.
-int canvasSize = 1200; // Assign this to a single value that is greater than 10 (I recommend at least 200).
+int numAnts = 100; // Assign this to a single value.
+int canvasSize = 1200; // Assign this to a single value that is greater than 200.
 int numFood = 10; // Assign this to a single value.
 
 
@@ -23,5 +23,5 @@ void draw(){
   grid.drawGrid();
   grid.updatePheramones(colony.getColony());
   colony.drawColony();
-  colony.moveColony();
+  colony.moveColony(grid);
 }
