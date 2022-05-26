@@ -10,11 +10,11 @@ public class City{
   
   public void spreadDisease(int distance){
     for(Person person1: population){
-      int x = person1.getX();
-      int y = person1.getY();
+      int x = int(person1.getPosition().x);
+      int y = int(person1.getPosition().y);
       if(person1.isInfected()){
         for(Person person2: population){
-          if(dist(x, y, person2.getX(), person2.getY()) <= distance){
+          if(dist(x, y, person2.getPosition().x, person2.getPosition().y) <= distance){
             person2.infect(); 
           }
         }

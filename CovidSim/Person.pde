@@ -2,19 +2,16 @@ public class Person{
   boolean susceptible;
   boolean infected;
   boolean alive;
-  int x;
-  int y;
-  String currentDirection;
-  boolean hitEdge;
-  final String[] possibleDirections = {"Up", "Right", "Down", "Left"};
+  PVector position;
+  PVector velocity;
   
   public Person(int citySize, InfectedCount count){
     alive = true;
-    hitEdge = false;
-    x = getRand10(0, citySize);
-    y = getRand10(0, citySize);
-    currentDirection = possibleDirections[int(random(0, 4))];
-    
+    int x = getRand10(0, citySize);
+    int y = getRand10(0, citySize);
+    position = new PVector(x, y);
+    velocity = PVector.random2D();
+    velocity.mult(5);
     // First n people are infected. The value of n is determined by a user, which becomes a property of InfectedCount objects.
     if(!count.enoughInfected()){
       susceptible = false;
@@ -31,14 +28,6 @@ public class Person{
     return round((random(1)*(max-min)+min)/10)*10;
   }
   
-  public int getX(){
-    return x; 
-  }
-  
-  public int getY(){
-    return y; 
-  }
-  
   public boolean isInfected(){
     return infected; 
   }
@@ -48,33 +37,30 @@ public class Person{
   }
   
   public void movePerson(int edge){
-    if(x == 0 || y == 0 || x == edge || y == edge){
-      if(currentDirection == "Up"){
-        currentDirection = "Down";
-        y = y + 10;
-      }else if(currentDirection == "Right"){
-        currentDirection = "Left"; 
-        x = x - 10;
-      }else if(currentDirection == "Down"){
-        currentDirection = "Up";
-        y = y - 10;
-      }else{
-        currentDirection = "Right"; 
-        x = x + 10;
-      }
-    }else{
-      if(currentDirection == "Up"){
-        y = y - 10;
-      }else if(currentDirection == "Right"){
-        x = x + 10;
-      }else if(currentDirection == "Down"){
-        y = y + 10;
-      }else{
-        x = x - 10;
-      }
+    position.add(velocity);
+    hitEdge(edge);
+  }
+  
+  public void hitEdge(int edge){
+    // Check for edge of city.
+    // If at edge, bounce back.
+    if (position.x > edge - 10) {
+      position.x = edge - 10;
+      velocity.x *= -1;
+    } else if (position.x < 10) {
+      position.x = 10;
+      velocity.x *= -1;
+    } else if (position.y > edge - 10) {
+      position.y = edge - 10;
+      velocity.y *= -1;
+    } else if (position.y < 10) {
+      position.y = 10;
+      velocity.y *= -1;
     }
-    println("X " + x);
-    println("Y " + y);
+  }
+  
+  public PVector getPosition(){
+    return position; 
   }
   
   public void drawPerson(){
@@ -86,6 +72,6 @@ public class Person{
       fill(255, 0, 0); 
     }
     
-   ellipse(x, y, 10, 10); 
+   ellipse(position.x, position.y, 10, 10); 
   }  
 }
