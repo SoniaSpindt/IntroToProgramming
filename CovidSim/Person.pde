@@ -8,7 +8,7 @@ public class Person{
   public Person(int citySize, InfectedCount count){
     alive = true;
     int x = getRand10(0, citySize);
-    int y = getRand10(0, citySize);
+    int y = getRand10(0, citySize - 75); // -75 to make room for text at the bottom of screen.
     position = new PVector(x, y);
     velocity = PVector.random2D();
     velocity.mult(5);
@@ -50,8 +50,8 @@ public class Person{
     } else if (position.x < 10) {
       position.x = 10;
       velocity.x *= -1;
-    } else if (position.y > edge - 10) {
-      position.y = edge - 10;
+    } else if (position.y > edge - 75) {
+      position.y = edge - 75;
       velocity.y *= -1;
     } else if (position.y < 10) {
       position.y = 10;
@@ -63,7 +63,7 @@ public class Person{
     return position; 
   }
   
-  public void drawPerson(){
+  public void drawPerson(int citySize){
     noStroke();
     if(susceptible){
       fill(140); 
@@ -72,6 +72,6 @@ public class Person{
       fill(255, 0, 0); 
     }
     
-   ellipse(position.x, position.y, 10, 10); 
+   ellipse(position.x, position.y, citySize * 0.01, citySize * 0.01); 
   }  
 }
