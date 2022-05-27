@@ -1,5 +1,5 @@
-int populationSize = 100; // Assign to an expression that evaluates to a number greater than 1 and less than 1000000.
-int citySize = 400; // Assign to an expression that evaluates to a number greater than 200 and less than 1000. CHALLENGE: Write the expression you need to get the size to perfectly fit your computer screen using Processing environment variables.
+int citySize = 500; // Assign to an expression that represents the relative size of Denver County sq
+int populationSize = 4650; // Assign to an expression that represents number of people per square mile (3922)
 int infectedSeed = 1; // Assign to an expression that evaluations to a number greater than 0 but less than 10.
 int distance = 10; // Assign this to a value that represents how close people have to be in order to infect one another. This represents an upperbound.
 
