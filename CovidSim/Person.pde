@@ -1,12 +1,17 @@
 public class Person{
   boolean susceptible;
   boolean infected;
+  int daysInfected;
+  boolean symptomatic;
   boolean alive;
+  boolean recovered;
   PVector position;
   PVector velocity;
   
   public Person(int citySize, InfectedCount count){
     alive = true;
+    recovered = false;
+    daysInfected = 0;
     int x = getRand10(0, citySize);
     int y = getRand10(0, citySize - 75); // -75 to make room for text at the bottom of screen.
     position = new PVector(x, y);
@@ -19,6 +24,7 @@ public class Person{
       count.updateInfectedCount();
     }else{
       susceptible = true;
+      symptomatic = false;
       infected = false;
     }
   }
@@ -28,17 +34,56 @@ public class Person{
     return round((random(1)*(max-min)+min)/10)*10;
   }
   
+  public int getDaysInfected(){
+    return daysInfected; 
+  }
+  
+  public void updateDaysInfected(){
+    daysInfected = daysInfected + 1; 
+  }
+  
+  public void recovers(){
+    recovered = true;
+  }
+  
   public boolean isInfected(){
     return infected; 
   }
   
   public void infect(){
     infected = true; 
+    
+    // Only 20% of individuals infected are not symptomatic.
+    int chance = int(random(0, 11));
+    if(chance <= 2){
+      symptomatic = false;
+    }else{
+      symptomatic = true;
+    }
   }
   
+  public boolean isSymptomatic(){
+    return symptomatic; 
+  }
+  
+  public boolean isAlive(){
+    return alive; 
+  }
+  
+  public boolean hasRecovered(){
+    return recovered; 
+  }
+  
+  public void kill(){
+    alive = false;
+  }
+  
+  
   public void movePerson(int edge){
-    position.add(velocity);
-    hitEdge(edge);
+    if(this.alive){
+      position.add(velocity);
+      hitEdge(edge);
+    }
   }
   
   public void hitEdge(int edge){
@@ -70,6 +115,12 @@ public class Person{
     }
     if(infected){
       fill(255, 0, 0); 
+    }
+    if(!alive){
+      fill(0);
+    }
+    if(recovered){
+      fill(0, 255, 0); 
     }
     
    ellipse(position.x, position.y, citySize * 0.01, citySize * 0.01); 

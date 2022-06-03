@@ -10,6 +10,7 @@ public static class InfectedCount{
   public static void updateInfectedCount(){
     currentCount = currentCount + 1; 
   }
+  
   public boolean enoughInfected(){
     return currentCount == infectedSeed;
   }

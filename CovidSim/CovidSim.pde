@@ -1,8 +1,9 @@
-int citySize = 1000; // Assign to an expression that represents the relative size of Denver County sq
 int populationSize = 4650; // Assign to an expression that represents number of people per square mile (3922)
 int infectedSeed = 1; // Assign to an expression that evaluations to a number greater than 0 but less than 10.
-int distance = 10; // Assign this to a value that represents how close people have to be in order to infect one another. This represents an upperbound.
 
+
+int distance = 10; 
+int citySize = 500;
 City myCity;
 UI stats;
 public void settings(){
@@ -19,8 +20,9 @@ public void setup(){
 public void draw(){
   background(255);
   myCity.drawCity(citySize);
-  myCity.spreadDisease(citySize);
+  myCity.spreadDisease(citySize, frameCount);
   myCity.movePopulation(citySize);
+  
   stats.update(frameCount, myCity.getInfectedCount());
   stats.display(citySize);
 }

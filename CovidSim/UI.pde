@@ -14,13 +14,26 @@ public class UI{
     infected = infections;
   }
   
-  /* Maybe this is where students do expression work */
+  public int getDays(){
+    return dayCount; 
+  }
+  
+  /*
+  * Modify the code found under each comment.
+  * Do not change anything else.
+  */
   public void display(int citySize){
     textSize(citySize * 0.03);
     textAlign(CENTER);
     fill(0);
+    
+    // Replace the number 0 with an expression that contains the variable citSize
     text("Day: " + dayCount, citySize * 0.1, citySize - 25);
+    
+    // Replace the number 0 with an expression that contains the variable citSize
     text("Infected: " + infected, citySize * 0.45, citySize - 25);
+    
+    // Replace the number 0 with an expression that contains the variable citSize
     text("Dead: " + dead, citySize * 0.85, citySize - 25);
   }
 }
