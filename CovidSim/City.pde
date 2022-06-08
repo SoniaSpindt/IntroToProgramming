@@ -18,26 +18,42 @@ public class City{
     return infections;
   }
   
+  public int getDeadCount(){
+    int dead = 0;
+    for(Person p: population){
+      if(!p.isAlive()) {
+        dead = dead + 1;
+      }
+    }
+    
+    return dead;
+  }
+  
   public void spreadDisease(int citySize, int frames){
     for(Person person1: population){
-      if(person1.isInfected() && frames % 10 == 0){
-        person1.updateDaysInfected();
+      if(person1.isInfected()){
+        if(frames % 10 == 0){
+          person1.updateDaysInfected();
+        }
         
+        // A person needs to be sick for 7 days before recovery OR death
+        if(person1.getDaysInfected() == 7){
+          if(person1.isSymptomatic()){
+            int chance = int(random(0, 11)); 
+            if(chance == 1){
+              person1.kill(); 
+            }else{
+              person1.recovers(); 
+            }
+          }else{
+            person1.recovers(); 
+          }
+        }
       }
-      /*if(person1.isSymptomatic() && person1.getDaysInfected() % 7 == 0){
-        int chance = int(random(0, 11)); 
-        if(chance == 1){
-           person1.kill(); 
-         }else{
-           person1.recovers(); 
-         }
-       }*/
-       
+   
        int x = int(person1.getPosition().x);
        int y = int(person1.getPosition().y);
        if(person1.isInfected()){
-         person1.updateDaysInfected();
-         
          for(Person person2: population){
            if(dist(x, y, person2.getPosition().x, person2.getPosition().y) <= citySize * 0.01){
              person2.infect(); 
@@ -46,7 +62,6 @@ public class City{
         } 
       }
     }
-  
   
   public void movePopulation(int edge){
     for(Person p: population){

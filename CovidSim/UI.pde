@@ -9,9 +9,10 @@ public class UI{
     dead = 0;
   }
   
-  public void update(int frames, int infections){
+  public void update(int frames, int infections, int dead){
     dayCount = frames / 10;
     infected = infections;
+    this.dead = dead;
   }
   
   public int getDays(){

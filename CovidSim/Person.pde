@@ -78,7 +78,6 @@ public class Person{
     alive = false;
   }
   
-  
   public void movePerson(int edge){
     if(this.alive){
       position.add(velocity);
@@ -118,10 +117,10 @@ public class Person{
     }
     if(!alive){
       fill(0);
+    }else if(recovered){
+      fill(0, 255, 0);
     }
-    if(recovered){
-      fill(0, 255, 0); 
-    }
+    
     
    ellipse(position.x, position.y, citySize * 0.01, citySize * 0.01); 
   }  

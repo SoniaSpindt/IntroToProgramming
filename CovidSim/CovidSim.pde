@@ -22,7 +22,6 @@ public void draw(){
   myCity.drawCity(citySize);
   myCity.spreadDisease(citySize, frameCount);
   myCity.movePopulation(citySize);
-  
-  stats.update(frameCount, myCity.getInfectedCount());
+  stats.update(frameCount, myCity.getInfectedCount(), myCity.getDeadCount());
   stats.display(citySize);
 }
